@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, FolderOpen, List, Settings } from "lucide-react";
+import { BarChart3, FolderOpen, List, Settings, Radio, Github } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { href: "/", label: "Dashboard", icon: BarChart3 },
   { href: "/projects", label: "Projects", icon: FolderOpen },
   { href: "/sessions", label: "Sessions", icon: List },
+  { href: "/live", label: "Live", icon: Radio },
   { href: "/settings", label: "Settings", icon: Settings },
 ] as const;
 
@@ -42,6 +43,14 @@ export function Nav() {
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
+          <a
+            href="https://github.com/maximilianfalco"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            <Github className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </header>
