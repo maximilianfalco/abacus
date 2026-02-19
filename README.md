@@ -21,6 +21,13 @@
 
 ---
 
+<table>
+  <tr>
+    <td><img src="apps/web/public/dashboard.png" alt="Dashboard" width="100%"/></td>
+    <td><img src="apps/web/public/live.png" alt="Live Sessions" width="100%"/></td>
+  </tr>
+</table>
+
 ## What it does
 
 Abacus reads the JSONL logs that Claude Code writes to `~/.claude/projects/`, parses every token event, and renders usage dashboards — all locally, no external services.
