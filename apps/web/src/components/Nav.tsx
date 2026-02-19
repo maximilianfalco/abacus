@@ -44,7 +44,7 @@ export function Nav() {
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
           <a
-            href="https://github.com/maximilianfalco"
+            href="https://github.com/maximilianfalco/abacus"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
