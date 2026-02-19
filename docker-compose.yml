@@ -1,0 +1,10 @@
+services:
+  abacus:
+    build: .
+    ports:
+      - "3456:3456"
+    volumes:
+      - ${HOME}/.claude/projects:/data/claude:ro
+    environment:
+      - CLAUDE_DATA_PATH=/data/claude
+    restart: unless-stopped

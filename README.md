@@ -16,6 +16,7 @@
   <img src="https://img.shields.io/badge/next.js-16-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js"/>
   <img src="https://img.shields.io/badge/react-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React"/>
   <img src="https://img.shields.io/badge/tailwind-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind"/>
+  <img src="https://img.shields.io/badge/docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker"/>
 </p>
 
 ---
@@ -61,6 +62,36 @@ cp apps/web/.env.example apps/web/.env.local
 | `SYNC_ENDPOINT` | — | Remote endpoint for sender mode |
 | `SYNC_API_KEY` | — | Shared secret for sync auth |
 | `SYNC_INTERVAL_HOURS` | `1` | How often to sync (sender mode) |
+
+</details>
+
+## Docker
+
+Run Abacus as a background container — no terminal needed.
+
+```bash
+docker compose up -d --build
+```
+
+This mounts `~/.claude/projects` read-only into the container. Open [localhost:3456](http://localhost:3456).
+
+To stop:
+
+```bash
+docker compose down
+```
+
+<details>
+<summary><strong>Build from source</strong></summary>
+
+```bash
+docker build -t abacus .
+docker run -d -p 3456:3456 \
+  -v ~/.claude/projects:/data/claude:ro \
+  -e CLAUDE_DATA_PATH=/data/claude \
+  --restart unless-stopped \
+  abacus
+```
 
 </details>
 

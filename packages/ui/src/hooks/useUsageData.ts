@@ -3,6 +3,12 @@
 import useSWR from "swr";
 import type { UsageSummary } from "@abacus/parser";
 
+interface ElectronWindow extends Window {
+  electronAPI: {
+    getUsageData: (p: Record<string, string | undefined>) => Promise<UsageSummary>;
+  };
+}
+
 export interface UseUsageDataParams {
   dateRange?: "7d" | "30d" | "90d" | "custom";
   from?: string;
@@ -41,11 +47,12 @@ function buildQueryString(params: UseUsageDataParams): string {
   return new URLSearchParams(entries).toString();
 }
 
-const isElectron = typeof window !== "undefined" && !!window.electronAPI;
+const isElectron =
+  typeof window !== "undefined" && "electronAPI" in window;
 
 async function fetcher(params: UseUsageDataParams): Promise<UsageSummary> {
   if (isElectron) {
-    return window.electronAPI!.getUsageData(
+    return (window as unknown as ElectronWindow).electronAPI.getUsageData(
       Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined)),
     );
   }
