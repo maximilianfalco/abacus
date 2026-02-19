@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="apps/web/public/icon.svg" width="80" height="80" alt="abacus"/>
+</p>
+
 <h1 align="center">abacus</h1>
 
 <p align="center">

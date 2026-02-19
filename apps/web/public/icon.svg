@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <!-- Background -->
+  <rect width="512" height="512" rx="108" fill="#0A0A0A"/>
+
+  <!-- Frame -->
+  <rect x="112" y="96" width="16" height="320" rx="8" fill="#525252"/>
+  <rect x="384" y="96" width="16" height="320" rx="8" fill="#525252"/>
+
+  <!-- Rod 1 -->
+  <rect x="112" y="148" width="288" height="6" rx="3" fill="#404040"/>
+  <!-- Beads: 2 left, 1 right -->
+  <rect x="144" y="131" width="44" height="40" rx="20" fill="#3B82F6"/>
+  <rect x="196" y="131" width="44" height="40" rx="20" fill="#3B82F6"/>
+  <rect x="336" y="131" width="44" height="40" rx="20" fill="#60A5FA"/>
+
+  <!-- Rod 2 -->
+  <rect x="112" y="238" width="288" height="6" rx="3" fill="#404040"/>
+  <!-- Beads: 1 left, 2 right -->
+  <rect x="144" y="221" width="44" height="40" rx="20" fill="#8B5CF6"/>
+  <rect x="284" y="221" width="44" height="40" rx="20" fill="#A78BFA"/>
+  <rect x="336" y="221" width="44" height="40" rx="20" fill="#A78BFA"/>
+
+  <!-- Rod 3 -->
+  <rect x="112" y="328" width="288" height="6" rx="3" fill="#404040"/>
+  <!-- Beads: 3 left -->
+  <rect x="144" y="311" width="44" height="40" rx="20" fill="#10B981"/>
+  <rect x="196" y="311" width="44" height="40" rx="20" fill="#10B981"/>
+  <rect x="248" y="311" width="44" height="40" rx="20" fill="#34D399"/>
+</svg>
