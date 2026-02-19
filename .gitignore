@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.next/
+.turbo/
+*.tsbuildinfo
+
+# Ralph (all config + state)
+.ralph/
+.ralphrc
+
+# Environment
+.env.local
+.env
+
+# Scaffold temp
+web-scaffold/
