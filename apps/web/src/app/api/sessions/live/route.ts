@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
-import { readAll, groupBySession } from "@abacus/parser";
-import { getConfig } from "@/app/lib/config";
+import { groupBySession } from "@abacus/parser";
+import { getCachedLines } from "@/app/lib/cache";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const config = getConfig();
-  const lines = await readAll(config.dataPath);
+  const lines = await getCachedLines();
   const sessions = groupBySession(lines);
 
   // Only sessions with activity in the last 30 minutes

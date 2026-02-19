@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readAll, summarize, type DateRange } from "@abacus/parser";
-import { getConfig } from "@/app/lib/config";
+import { summarize, type DateRange } from "@abacus/parser";
+import { getCachedLines } from "@/app/lib/cache";
 
 function parseDateRange(
   dateRange?: string,
@@ -25,7 +25,6 @@ function parseDateRange(
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const config = getConfig();
 
   const dateRange = searchParams.get("dateRange") ?? undefined;
   const from = searchParams.get("from") ?? undefined;
@@ -33,7 +32,7 @@ export async function GET(request: NextRequest) {
   const project = searchParams.get("project") ?? undefined;
   const model = searchParams.get("model") ?? undefined;
 
-  let lines = await readAll(config.dataPath);
+  let lines = await getCachedLines();
 
   if (project) lines = lines.filter((l) => l.project === project);
   if (model) lines = lines.filter((l) => l.model.includes(model));
