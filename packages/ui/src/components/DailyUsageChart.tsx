@@ -9,13 +9,11 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  Brush,
 } from "recharts";
 import type { DailyUsage } from "@abacus/parser";
-import { TOKEN_COLORS } from "../lib/colors.js";
-import { formatTokens, formatCost, formatDate } from "../lib/format.js";
+import { TOKEN_COLORS } from "../lib/colors";
+import { formatTokens, formatCost, formatDate } from "../lib/format";
 
 export interface DailyUsageChartProps {
   data: DailyUsage[];
@@ -56,9 +54,9 @@ export function DailyUsageChart({
   const Chart = chartType === "line" ? LineChart : BarChart;
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-card-foreground">Daily Usage</h3>
+    <div className="flex h-full flex-col rounded-lg border border-border bg-card p-3">
+      <div className="mb-2 flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-card-foreground">Daily Usage</h3>
         <div className="flex gap-1">
           {RANGES.map((r) => (
             <button
@@ -75,7 +73,9 @@ export function DailyUsageChart({
           ))}
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={320}>
+      <div className="relative min-h-0 flex-1">
+      <div className="absolute inset-0">
+      <ResponsiveContainer width="100%" height="100%">
         <Chart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
           <XAxis dataKey="label" className="text-xs" />
@@ -84,7 +84,6 @@ export function DailyUsageChart({
             <YAxis yAxisId="cost" orientation="right" tickFormatter={formatCost} className="text-xs" />
           )}
           <Tooltip content={<CustomTooltip />} />
-          <Legend />
           {chartType === "bar" ? (
             <>
               <Bar dataKey="inputTokens" name="Input" stackId="tokens" fill={TOKEN_COLORS.input} />
@@ -103,9 +102,10 @@ export function DailyUsageChart({
           {showCost && (
             <Line yAxisId="cost" dataKey="cost" name="Cost" stroke="#EF4444" dot={false} strokeDasharray="5 5" />
           )}
-          <Brush dataKey="label" height={30} stroke="#888" />
         </Chart>
       </ResponsiveContainer>
+      </div>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import type { ParsedSession } from "@abacus/parser";
-import { formatTokens, formatCost, formatDateFull, formatDuration } from "../lib/format.js";
+import { formatTokens, formatCost, formatDateFull, formatDuration } from "../lib/format";
 
 export interface SessionTableProps {
   data: ParsedSession[];

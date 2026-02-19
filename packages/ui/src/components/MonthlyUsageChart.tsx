@@ -12,8 +12,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { MonthlyUsage } from "@abacus/parser";
-import { TOKEN_COLORS } from "../lib/colors.js";
-import { formatTokens, formatCost, formatMonth, formatPercent } from "../lib/format.js";
+import { TOKEN_COLORS } from "../lib/colors";
+import { formatTokens, formatCost, formatMonth, formatPercent } from "../lib/format";
 
 export interface MonthlyUsageChartProps {
   data: MonthlyUsage[];

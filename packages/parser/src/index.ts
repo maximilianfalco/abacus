@@ -9,15 +9,15 @@ export type {
   ModelUsage,
   UsageSummary,
   DateRange,
-} from "./types.js";
+} from "./types";
 
 export {
   readAll,
   readFile,
   readIncremental,
   deriveProjectName,
-} from "./reader.js";
-export type { ParsedLine, FileOffsets } from "./reader.js";
+} from "./reader";
+export type { ParsedLine, FileOffsets } from "./reader";
 
 export {
   groupByDay,
@@ -27,11 +27,11 @@ export {
   groupByProject,
   groupByModel,
   summarize,
-} from "./aggregator.js";
+} from "./aggregator";
 
 export {
   calculateCost,
   normalizeModelName,
   getPricingTable,
-} from "./cost-calculator.js";
-export type { ModelPricing, TokenCounts } from "./cost-calculator.js";
+} from "./cost-calculator";
+export type { ModelPricing, TokenCounts } from "./cost-calculator";

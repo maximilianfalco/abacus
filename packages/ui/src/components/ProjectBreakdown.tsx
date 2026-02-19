@@ -11,7 +11,7 @@ import {
   Cell,
 } from "recharts";
 import type { ProjectUsage } from "@abacus/parser";
-import { formatTokens, formatCost } from "../lib/format.js";
+import { formatTokens, formatCost } from "../lib/format";
 
 export interface ProjectBreakdownProps {
   data: ProjectUsage[];
@@ -33,9 +33,11 @@ export function ProjectBreakdown({ data, limit = 10, onProjectClick }: ProjectBr
   }));
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
-      <h3 className="mb-4 text-lg font-semibold text-card-foreground">Projects</h3>
-      <ResponsiveContainer width="100%" height={Math.max(200, chartData.length * 40 + 40)}>
+    <div className="flex h-full flex-col rounded-lg border border-border bg-card p-3">
+      <h3 className="mb-2 text-sm font-semibold text-card-foreground">Projects</h3>
+      <div className="relative min-h-0 flex-1">
+      <div className="absolute inset-0">
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData} layout="vertical" margin={{ left: 80 }}>
           <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
           <XAxis type="number" tickFormatter={formatTokens} className="text-xs" />
@@ -65,6 +67,8 @@ export function ProjectBreakdown({ data, limit = 10, onProjectClick }: ProjectBr
           </Bar>
         </BarChart>
       </ResponsiveContainer>
+      </div>
+      </div>
     </div>
   );
 }

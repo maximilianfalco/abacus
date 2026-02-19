@@ -12,8 +12,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { DailyUsage } from "@abacus/parser";
-import { TOKEN_COLORS } from "../lib/colors.js";
-import { formatTokens, formatCost, formatDate } from "../lib/format.js";
+import { TOKEN_COLORS } from "../lib/colors";
+import { formatTokens, formatCost, formatDate } from "../lib/format";
 
 export interface CacheTokensChartProps {
   data: DailyUsage[];

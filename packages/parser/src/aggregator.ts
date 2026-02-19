@@ -7,9 +7,9 @@ import type {
   ModelUsage,
   UsageSummary,
   DateRange,
-} from "./types.js";
-import type { ParsedLine } from "./reader.js";
-import { calculateCost, normalizeModelName } from "./cost-calculator.js";
+} from "./types";
+import type { ParsedLine } from "./reader";
+import { calculateCost, normalizeModelName } from "./cost-calculator";
 
 function toDateKey(ts: string): string {
   return ts.slice(0, 10); // "YYYY-MM-DD"

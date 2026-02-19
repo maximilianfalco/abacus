@@ -2,8 +2,8 @@
 
 import { useMemo } from "react";
 import type { DailyUsage } from "@abacus/parser";
-import { HEATMAP_COLORS } from "../lib/colors.js";
-import { formatTokens, formatCost } from "../lib/format.js";
+import { HEATMAP_COLORS } from "../lib/colors";
+import { formatTokens, formatCost } from "../lib/format";
 
 export interface UsageHeatmapProps {
   data: DailyUsage[];
@@ -73,9 +73,9 @@ export function UsageHeatmap({ data, year, colorScheme = "green" }: UsageHeatmap
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
-      <h3 className="mb-4 text-lg font-semibold text-card-foreground">Usage Heatmap — {targetYear}</h3>
-      <div className="overflow-x-auto">
+    <div className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card p-3">
+      <h3 className="mb-2 text-sm font-semibold text-card-foreground">Usage Heatmap — {targetYear}</h3>
+      <div className="min-h-0 flex-1 overflow-auto">
         <div className="inline-block">
           <div className="flex text-xs text-muted-foreground" style={{ marginLeft: 32 }}>
             {monthPositions.map(({ month, weekIdx }) => (
@@ -88,10 +88,10 @@ export function UsageHeatmap({ data, year, colorScheme = "green" }: UsageHeatmap
               </span>
             ))}
           </div>
-          <div className="mt-4 flex gap-0.5">
+          <div className="mt-2 flex gap-0.5">
             <div className="flex flex-col gap-0.5 pr-1 text-xs text-muted-foreground">
               {DAY_LABELS.map((label, i) => (
-                <div key={i} className="flex h-[12px] items-center text-[10px]">
+                <div key={i} className="flex h-[10px] items-center text-[9px]">
                   {label}
                 </div>
               ))}
@@ -101,7 +101,7 @@ export function UsageHeatmap({ data, year, colorScheme = "green" }: UsageHeatmap
                 {week.map((day, di) => (
                   <div
                     key={di}
-                    className="h-[12px] w-[12px] rounded-sm"
+                    className="h-[10px] w-[10px] rounded-sm"
                     style={{ backgroundColor: getColor(day.usage, day.inYear) }}
                     title={
                       day.inYear && day.usage

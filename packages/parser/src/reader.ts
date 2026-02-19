@@ -1,6 +1,6 @@
 import { readdir, readFile as fsReadFile, stat } from "node:fs/promises";
 import { join, sep } from "node:path";
-import type { AssistantUsage, RawJSONLLine } from "./types.js";
+import type { AssistantUsage, RawJSONLLine } from "./types";
 
 export interface ParsedLine {
   sessionId: string;

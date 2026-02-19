@@ -1,7 +1,7 @@
 "use client";
 
-import { formatTokens, formatCost, formatPercent, percentChange } from "../lib/format.js";
-import { COMPARISON_COLORS } from "../lib/colors.js";
+import { formatTokens, formatCost, formatPercent, percentChange } from "../lib/format";
+import { COMPARISON_COLORS } from "../lib/colors";
 
 interface PeriodData {
   tokens: number;
@@ -50,22 +50,22 @@ function StatCard({
   previousTokens?: number;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
-      <p className="text-sm text-muted-foreground">{label}</p>
-      <p className="mt-1 text-2xl font-semibold text-card-foreground">
-        {formatTokens(tokens)}
-      </p>
-      <p className="text-sm text-muted-foreground">{formatCost(cost)}</p>
-      <div className="mt-2">
+    <div className="rounded-lg border border-border bg-card px-3 py-2">
+      <div className="flex items-baseline justify-between">
+        <p className="text-xs text-muted-foreground">{label}</p>
         <ComparisonBadge current={tokens} previous={previousTokens} />
       </div>
+      <p className="text-lg font-semibold leading-tight text-card-foreground">
+        {formatTokens(tokens)}
+      </p>
+      <p className="text-xs text-muted-foreground">{formatCost(cost)}</p>
     </div>
   );
 }
 
 export function CostSummaryCard({ current, previous }: CostSummaryCardProps) {
   return (
-    <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div className="grid grid-cols-4 gap-3">
       <StatCard
         label="Today"
         tokens={current.today.tokens}

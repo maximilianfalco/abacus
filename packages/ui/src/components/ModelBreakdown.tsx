@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import type { ModelUsage } from "@abacus/parser";
-import { MODEL_COLORS } from "../lib/colors.js";
-import { formatTokens, formatCost } from "../lib/format.js";
+import { MODEL_COLORS } from "../lib/colors";
+import { formatTokens, formatCost } from "../lib/format";
 
 export interface ModelBreakdownProps {
   data: ModelUsage[];
@@ -25,9 +25,9 @@ export function ModelBreakdown({ data, metric: initialMetric = "tokens" }: Model
   const total = chartData.reduce((sum, d) => sum + d.value, 0);
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-card-foreground">By Model</h3>
+    <div className="flex h-full flex-col rounded-lg border border-border bg-card p-3">
+      <div className="mb-2 flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-card-foreground">By Model</h3>
         <div className="flex gap-1">
           {(["tokens", "cost"] as const).map((m) => (
             <button
@@ -44,7 +44,9 @@ export function ModelBreakdown({ data, metric: initialMetric = "tokens" }: Model
           ))}
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={280}>
+      <div className="relative min-h-0 flex-1">
+      <div className="absolute inset-0">
+      <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={chartData}
@@ -90,6 +92,8 @@ export function ModelBreakdown({ data, metric: initialMetric = "tokens" }: Model
           </text>
         </PieChart>
       </ResponsiveContainer>
+      </div>
+      </div>
     </div>
   );
 }
